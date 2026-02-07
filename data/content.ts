@@ -98,12 +98,16 @@ export const energyTypes: EnergyType[] = [
     shortDescription: 'A força fundamental que mantém a matéria unida.',
     fullDescription: 'É a energia contida no núcleo dos átomos, mantida pela Força Nuclear Forte. Baseia-se na famosa equação de Einstein (E=mc²), onde uma pequena quantidade de matéria é convertida em uma quantidade colossal de energia. Pode ocorrer por Fissão (quebra de núcleos pesados como Urânio) ou Fusão (união de núcleos leves como Hidrogênio).',
     obtained: 'Comercialmente, através da fissão controlada de Urânio-235 ou Plutônio em reatores. A reação em cadeia gera calor intenso, que ferve água, gerando vapor para girar turbinas elétricas.',
-    usage: 'Geração de eletricidade de base (constante) para grandes metrópoles, propulsão naval (submarinos e porta-aviões que operam por anos sem reabastecer) e produção de radioisótopos para medicina (tratamento de câncer).',
+    usage: 'Geração de eletricidade de base (constante) para grandes metrópoles, propulsão naval (submarinos e porta-aviões que operam por anos sem reabastecer) e, crucialmente, produção de radioisótopos para medicina (tratamento de câncer).',
     pros: ['Densidade energética imbatível (1 pastilha de urânio = 1 tonelada de carvão)', 'Não emite CO2 durante a operação', 'Fornecimento contínuo independente do clima'],
     cons: ['Resíduos radioativos perigosos por milênios', 'Risco de proliferação de armas nucleares', 'Consequências catastróficas em caso de falha de segurança'],
     impacts: 'Acidentes históricos (Chernobyl, Fukushima) criaram zonas de exclusão habitacional. O aquecimento da água de rios usados para resfriamento pode alterar o ecossistema aquático local.',
     examples: ['Reatores PWR/BWR', 'O Sol (Fusão Natural)', 'Bombas atômicas'],
-    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80'
+    // IMAGEM ALTERADA: Usina nuclear (torres de resfriamento)
+    // Para usar sua própria imagem PNG:
+    // 1. Coloque o arquivo (ex: 'minha-usina.png') dentro da pasta 'public' na raiz do projeto.
+    // 2. Mude a linha abaixo para: imageUrl: '/minha-usina.png'
+    imageUrl: 'https://images.unsplash.com/photo-1569091791842-7cf9646cb126?auto=format&fit=crop&w=800&q=80'
   }
 ];
 

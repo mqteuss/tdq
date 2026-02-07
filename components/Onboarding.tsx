@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 interface OnboardingProps {
@@ -8,42 +8,69 @@ interface OnboardingProps {
 const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
   const [inputValue, setInputValue] = useState('');
   const [isFading, setIsFading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Suave fade-in ao carregar
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim()) {
       setIsFading(true);
-      setTimeout(() => onComplete(inputValue), 500);
+      setTimeout(() => onComplete(inputValue), 800);
     }
   };
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-slate-50 dark:bg-neutral-950 transition-opacity duration-500 ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-      <div className="w-full max-w-md px-6">
-        <h1 className="text-3xl md:text-4xl font-light text-slate-900 dark:text-white mb-2 tracking-tight">
-          Olá.
+    <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-50 dark:bg-neutral-950 transition-all duration-1000 ${isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      
+      {/* Linha decorativa vertical para elegância estrutural */}
+      <div className={`absolute top-0 w-px h-32 bg-gradient-to-b from-slate-200 to-transparent dark:from-neutral-800 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
+
+      <div className={`w-full max-w-xl px-8 flex flex-col items-center text-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        
+        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400 mb-8">
+          Acesso ao Material Didático
+        </span>
+
+        <h1 className="text-3xl md:text-4xl font-serif text-slate-900 dark:text-white mb-2 tracking-tight">
+          Bem-vindo.
         </h1>
-        <p className="text-slate-500 dark:text-slate-400 mb-8 text-lg font-light">
-          Como você gostaria de ser chamado durante nossa jornada?
+        <p className="text-slate-500 dark:text-slate-400 font-light mb-12">
+          Por favor, identifique-se para iniciar a sessão.
         </p>
 
-        <form onSubmit={handleSubmit} className="relative group">
+        <form onSubmit={handleSubmit} className="w-full relative">
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Seu nome"
-            className="w-full bg-transparent border-b-2 border-slate-200 dark:border-neutral-800 py-3 text-xl focus:outline-none focus:border-brand-500 dark:focus:border-brand-500 transition-colors text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-neutral-700"
+            placeholder="Nome Completo"
+            className="w-full bg-transparent border-b border-slate-200 dark:border-neutral-800 py-4 text-center text-xl md:text-2xl focus:outline-none focus:border-slate-800 dark:focus:border-slate-200 transition-all text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-neutral-700 font-serif"
             autoFocus
           />
-          <button 
-            type="submit"
-            disabled={!inputValue.trim()}
-            className={`absolute right-0 top-3 text-slate-400 dark:text-slate-500 transition-all duration-300 ${inputValue.trim() ? 'opacity-100 translate-x-0 hover:text-brand-500' : 'opacity-0 -translate-x-4'}`}
-          >
-            <ArrowRight size={28} />
-          </button>
+          
+          <div className={`mt-12 flex justify-center transition-all duration-700 ${inputValue.trim() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
+            <button 
+              type="submit"
+              className="group flex items-center gap-4 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-xs font-bold uppercase tracking-widest hover:shadow-lg transition-all"
+            >
+              Acessar Conteúdo
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
         </form>
+
+      </div>
+      
+       {/* Nota de Rodapé Discreta */}
+      <div className={`absolute bottom-10 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+         <p className="text-[10px] text-slate-400 uppercase tracking-widest">
+           Energi • Sistemas Físicos
+         </p>
       </div>
     </div>
   );
