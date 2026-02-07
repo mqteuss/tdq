@@ -22,3 +22,50 @@ body {
 .dark ::-webkit-scrollbar-thumb {
   background: #475569;
 }
+
+/* 
+  ESTILOS DE IMPRESSÃO (PRINT STYLES)
+  Isso garante que se o professor tentar imprimir (Ctrl+P), 
+  o site se comporta como um documento PDF limpo.
+*/
+@media print {
+  /* Esconder elementos de navegação e interativos que não fazem sentido no papel */
+  nav, button, footer, #lab, .fixed, .animate-pulse {
+    display: none !important;
+  }
+
+  /* Resetar cores de fundo para economizar tinta e garantir legibilidade */
+  body, section, div, main {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Forçar a expansão de todos os cards de energia */
+  .max-h-0 {
+    max-height: none !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+  
+  /* Ajustes de tipografia para leitura em papel */
+  p, h1, h2, h3, h4, h5, li {
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+
+  /* Garantir que imagens não sejam cortadas */
+  img {
+    break-inside: avoid;
+    max-width: 100% !important;
+  }
+  
+  /* Quebras de página inteligentes */
+  section {
+    break-inside: avoid;
+    page-break-after: always;
+    padding: 0 !important;
+    margin-bottom: 2cm !important;
+  }
+}

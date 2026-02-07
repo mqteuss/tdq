@@ -8,13 +8,15 @@ import EfficiencyChart from './components/EfficiencyChart';
 import NarrativeBreak from './components/NarrativeBreak';
 import EnergyLab from './components/EnergyLab';
 import Footer from './components/Footer';
-import TutorialOverlay from './components/TutorialOverlay'; // New Import
+import TutorialOverlay from './components/TutorialOverlay';
+import References from './components/References'; // New Import
+import ScrollToTop from './components/ScrollToTop'; // New Import
 import { energyTypes } from './data/content';
 import { Theme } from './types';
 
 const App: React.FC = () => {
   const [userName, setUserName] = useState<string | null>(null);
-  const [showTutorial, setShowTutorial] = useState(false); // Tutorial State
+  const [showTutorial, setShowTutorial] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -37,7 +39,6 @@ const App: React.FC = () => {
 
   const handleOnboardingComplete = (name: string) => {
     setUserName(name);
-    // Show tutorial immediately after name entry
     setShowTutorial(true);
   };
 
@@ -104,6 +105,8 @@ const App: React.FC = () => {
 
         <EnergyLab />
 
+        <References />
+
         <NarrativeBreak 
            text={`Chegamos ao fim deste capítulo, ${userName}. A energia continuará fluindo e se transformando ao seu redor. Agora, você tem o olhar necessário para percebê-la.`}
            align="center"
@@ -112,6 +115,7 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
