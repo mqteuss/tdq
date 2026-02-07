@@ -27,6 +27,16 @@ const EnergyCard: React.FC<EnergyCardProps> = ({ data, index = 0 }) => {
     return () => observer.disconnect();
   }, []);
 
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsOpen(false);
+    // Aguarda um breve momento para a animação de fechar começar, 
+    // depois realinha o scroll para o card atual, evitando que a tela pule para baixo.
+    setTimeout(() => {
+      cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  };
+
   return (
     <div 
       ref={cardRef}
@@ -139,9 +149,13 @@ const EnergyCard: React.FC<EnergyCardProps> = ({ data, index = 0 }) => {
             {/* Column 2: Side Data (Analysis & Examples) - 5 Columns */}
             <div className="lg:col-span-5 space-y-8">
               
-              {/* Image Insight */}
-              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-slate-200 dark:border-neutral-800 grayscale hover:grayscale-0 transition-all duration-700 mb-8">
-                <img src={data.imageUrl} alt={data.title} className="w-full h-full object-cover" />
+              {/* Image Insight - Updated for Pop-out Effect */}
+              <div className="w-full aspect-video rounded-2xl overflow-hidden border border-slate-200 dark:border-neutral-800 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 mb-8 cursor-pointer">
+                <img 
+                  src={data.imageUrl} 
+                  alt={data.title} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" 
+                />
               </div>
 
               {/* Technical Analysis Grid */}
@@ -198,7 +212,7 @@ const EnergyCard: React.FC<EnergyCardProps> = ({ data, index = 0 }) => {
               {/* Card Control */}
               <div className="pt-6">
                 <button 
-                  onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
+                  onClick={handleClose}
                   className="w-full py-4 bg-slate-900 text-white dark:bg-white dark:text-slate-900 rounded-xl font-bold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-3 shadow-lg"
                 >
                   Concluir análise de {data.title}
