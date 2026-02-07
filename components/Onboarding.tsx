@@ -43,15 +43,17 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
           Por favor, identifique-se para iniciar a sessão.
         </p>
 
-        <form onSubmit={handleSubmit} className="w-full relative">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Nome Completo"
-            className="w-full bg-transparent border-b border-slate-200 dark:border-neutral-800 py-4 text-center text-xl md:text-2xl focus:outline-none focus:border-slate-800 dark:focus:border-slate-200 transition-all text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-neutral-700 font-serif"
-            autoFocus
-          />
+        <form onSubmit={handleSubmit} className="w-full relative flex flex-col items-center">
+          <div className="w-full max-w-md relative group">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Como deseja ser chamado?"
+              className="w-full bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 rounded-xl py-5 px-6 text-center text-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-white focus:border-transparent transition-all duration-300 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-neutral-600 font-serif"
+              autoFocus
+            />
+          </div>
           
           <div className={`mt-12 flex justify-center transition-all duration-700 ${inputValue.trim() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
             <button 
