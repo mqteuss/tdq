@@ -4,15 +4,17 @@ import Onboarding from './components/Onboarding';
 import Hero from './components/Hero';
 import EnergyCard from './components/EnergyCard';
 import Transformations from './components/Transformations';
+import EfficiencyChart from './components/EfficiencyChart';
 import NarrativeBreak from './components/NarrativeBreak';
 import EnergyLab from './components/EnergyLab';
 import Footer from './components/Footer';
+import TutorialOverlay from './components/TutorialOverlay'; // New Import
 import { energyTypes } from './data/content';
 import { Theme } from './types';
 
 const App: React.FC = () => {
   const [userName, setUserName] = useState<string | null>(null);
-  // Default to light mode for a professional, document-like feel
+  const [showTutorial, setShowTutorial] = useState(false); // Tutorial State
   const [theme, setTheme] = useState<Theme>('light');
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -33,19 +35,29 @@ const App: React.FC = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
+  const handleOnboardingComplete = (name: string) => {
+    setUserName(name);
+    // Show tutorial immediately after name entry
+    setShowTutorial(true);
+  };
+
   if (!isLoaded) return null;
 
   if (!userName) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-neutral-950 transition-colors duration-500">
-        <Onboarding onComplete={setUserName} />
+        <Onboarding onComplete={handleOnboardingComplete} />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-neutral-950 transition-colors duration-500">
+    <div className="min-h-screen bg-slate-50 dark:bg-neutral-950 transition-colors duration-500 relative">
       <Navbar theme={theme} toggleTheme={toggleTheme} userName={userName} />
+      
+      {showTutorial && (
+        <TutorialOverlay onDismiss={() => setShowTutorial(false)} />
+      )}
       
       <main>
         <Hero userName={userName} />
@@ -82,6 +94,8 @@ const App: React.FC = () => {
         />
 
         <Transformations />
+
+        <EfficiencyChart />
 
         <NarrativeBreak 
            text="Teoria é fundamental, mas é na prática que a ciência ganha vida. Vamos testar sua capacidade de engenharia."
