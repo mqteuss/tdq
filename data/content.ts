@@ -107,7 +107,7 @@ export const energyTypes: EnergyType[] = [
     // Para usar sua própria imagem PNG:
     // 1. Coloque o arquivo (ex: 'minha-usina.png') dentro da pasta 'public' na raiz do projeto.
     // 2. Mude a linha abaixo para: imageUrl: '/minha-usina.png'
-    imageUrl: 'https://images.unsplash.com/photo-1569091791842-7cf9646cb126?auto=format&fit=crop&w=800&q=80'
+    imageUrl: '/foto-nuclear.png'
   }
 ];
 
