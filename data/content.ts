@@ -19,7 +19,7 @@ export const energyTypes: EnergyType[] = [
     cons: ['Não pode ser armazenada em grandes quantidades (depende de baterias caras ou reservatórios)', 'Perdas por efeito Joule nas linhas de transmissão', 'Risco de eletrocussão e incêndios'],
     impacts: 'Embora o uso seja limpo, a geração define o impacto. Hidrelétricas alagam biodiversidade; termelétricas poluem o ar. Além disso, o descarte incorreto de lixo eletrônico (e-waste) contamina lençóis freáticos com metais pesados.',
     examples: ['Descargas atmosféricas (raios)', 'Impulsos nervosos (bioeletricidade)', 'Rede de alta tensão'],
-    imageUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://portaldobiogas.com/wp-content/uploads/2023/11/ENERGIA-ELETRICA-O-QUE-E-COMO-E-GERADA-E-PRA-QUE-SERVE-1024x576.jpg.webp'
   },
   {
     id: 'quimica',
@@ -33,7 +33,7 @@ export const energyTypes: EnergyType[] = [
     cons: ['A liberação geralmente produz gases tóxicos ou de efeito estufa (CO2, metano)', 'Recursos fósseis são finitos (não renováveis)', 'Riscos de vazamentos contaminantes'],
     impacts: 'Principal motor das mudanças climáticas antropogênicas devido à emissão de Carbono. Derramamentos de petróleo destroem ecossistemas marinhos. A mineração de lítio e cobalto para baterias modernas também gera degradação do solo.',
     examples: ['Metabolismo celular', 'Dinamite', 'Baterias de Lítio'],
-    imageUrl: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Matches_lighting.jpg'
   },
   {
     id: 'mecanica',
@@ -61,7 +61,7 @@ export const energyTypes: EnergyType[] = [
     cons: ['Baixa eficiência na conversão para trabalho (limite de Carnot)', 'Difícil isolamento (tende a dissipar-se)', 'Geração excessiva causa poluição térmica'],
     impacts: 'Ilhas de calor em centros urbanos devido ao concreto e asfalto. Aquecimento global (aprisionamento de energia térmica na atmosfera). Descarte de água quente industrial em rios reduz o oxigênio dissolvido, matando peixes.',
     examples: ['Magma vulcânico', 'Aquecedores solares', 'Fricção de pneus'],
-    imageUrl: 'https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?auto=format&fit=crop&w=800&q=80'
+    imageUrl: 'https://conhecimentocientifico.r7.com/wp-content/uploads/2020/11/energia-termica-o-que-e-definicao-formula-e-principais-aplicacoes-1.jpg.webp'
   },
   {
     id: 'solar',
@@ -103,11 +103,9 @@ export const energyTypes: EnergyType[] = [
     cons: ['Resíduos radioativos perigosos por milênios', 'Risco de proliferação de armas nucleares', 'Consequências catastróficas em caso de falha de segurança'],
     impacts: 'Acidentes históricos (Chernobyl, Fukushima) criaram zonas de exclusão habitacional. O aquecimento da água de rios usados para resfriamento pode alterar o ecossistema aquático local.',
     examples: ['Reatores PWR/BWR', 'O Sol (Fusão Natural)', 'Bombas atômicas'],
-    // IMAGEM ALTERADA: Usina nuclear (torres de resfriamento)
-    // Para usar sua própria imagem PNG:
-    // 1. Coloque o arquivo (ex: 'minha-usina.png') dentro da pasta 'public' na raiz do projeto.
-    // 2. Mude a linha abaixo para: imageUrl: '/minha-usina.png'
-    imageUrl: '/foto-nuclear.png'
+    // IMAGEM CORRIGIDA: Usando URL direta do Unsplash para garantir carregamento.
+    // Representação abstrata e científica (partículas azuis/rede atômica).
+    imageUrl: 'https://s1.static.brasilescola.uol.com.br/be/conteudo/images/a-fissao-nuclear-ocorre-quando-um-nucleo-instavel-desintegra-se-em-nucleos-menores-produzindo-uma-reacao-em-cadeia-que-libera-muita-energia-5bca48f095318.jpg'
   }
 ];
 
